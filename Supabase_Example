@@ -1,0 +1,46 @@
+//
+//  SupabaseExample.swift
+//  Mobile Bootcamp Project
+//
+//  Demonstrates how an iOS app would connect to Supabase.
+//  (Code example only — cannot be run on Windows without Xcode.)
+//
+
+import Foundation
+import Supabase
+
+@main
+struct SupabaseDemo {
+    static func main() async {
+        // connect to your Supabase project
+        let supabaseURL = URL(string: "https://xyzcompany.supabase.co")!
+        let supabaseKey = "YOUR_ANON_KEY"
+
+        let client = SupabaseClient(
+            supabaseURL: supabaseURL,
+            supabaseKey: supabaseKey
+        )
+
+        // data from a table (for example: "todos")
+        do {
+            let response = try await client.database
+                .from("todos")
+                .select()
+            print("Fetched data successfully: \(response)")
+        } catch {
+            print("Error fetching data: \(error)")
+        }
+
+        // insert a new task (example)
+        do {
+            let newTask = ["task": "Finish bootcamp project", "is_done": false] as [String : Any]
+            let insertResponse = try await client.database
+                .from("todos")
+                .insert(values: [newTask])
+                .execute()
+            print("Added new task: \(insertResponse)")
+        } catch {
+            print("Error inserting task: \(error)")
+        }
+    }
+}
