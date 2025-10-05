@@ -1,0 +1,18 @@
+//With windows I am unable to check the results
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("Hello, iOS Bootcamp!")
+                .font(.largeTitle)
+                .padding()
+
+            Button("Tap Me") {
+                print("Button was tapped!")
+            }
+            .padding()
+        }
+    }
+}
