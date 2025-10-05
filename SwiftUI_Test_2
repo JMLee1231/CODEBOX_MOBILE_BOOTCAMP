@@ -1,0 +1,41 @@
+import SwiftUI
+
+struct ContentView: View {
+    // a variable that stores how many times the button is tapped
+    @State private var tapCount = 0
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("👆 Tap Counter")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            
+            Text("You tapped \(tapCount) times")
+                .font(.title2)
+                .foregroundColor(.blue)
+            
+            Button(action: {
+                tapCount += 1
+            }) {
+                Text("Tap Me!")
+                    .font(.title2)
+                    .padding()
+                    .background(Color.green.opacity(0.7))
+                    .cornerRadius(12)
+                    .foregroundColor(.white)
+            }
+            
+            Button(action: {
+                tapCount = 0
+            }) {
+                Text("Reset Counter")
+                    .font(.subheadline)
+                    .padding()
+                    .background(Color.red.opacity(0.7))
+                    .cornerRadius(12)
+                    .foregroundColor(.white)
+            }
+        }
+        .padding()
+    }
+}
