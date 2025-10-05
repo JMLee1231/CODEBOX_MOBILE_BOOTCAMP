@@ -1,0 +1,10 @@
+import Foundation
+
+var greeting = "Hello, iOS Bootcamp!"
+print(greeting)
+
+func addNumbers(a: Int, b: Int) -> Int {
+    return a + b
+}
+
+print("2 + 3 =", addNumbers(a: 2, b: 3))
